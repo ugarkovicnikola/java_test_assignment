@@ -56,12 +56,12 @@ public class DeveloperCourseController {
 
     @GetMapping(value = "/getByStudentId/{studentId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<DeveloperCourseDTO> getDeveloperCourseByStudentId(@PathVariable("studentId") Integer studentId) {
-        return developerCourseServiceImpl.findByDeveloperCourseByStudentId(studentId);
+        return developerCourseServiceImpl.findDeveloperCourseByStudentId(studentId);
     }
 
-    @GetMapping(value = "/getByTeacherId/{studentId}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<DeveloperCourseDTO> getDeveloperCourseByTeacherId(@PathVariable("studentId") Integer teacherId) {
-        return developerCourseServiceImpl.findByDeveloperCourseByTeacherId(teacherId);
+    @GetMapping(value = "/getByTeacherId/{teacherId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<DeveloperCourseDTO> getDeveloperCourseByTeacherId(@PathVariable("teacherId") Integer teacherId) {
+        return developerCourseServiceImpl.findDeveloperCourseByTeacherId(teacherId);
     }
 
 }

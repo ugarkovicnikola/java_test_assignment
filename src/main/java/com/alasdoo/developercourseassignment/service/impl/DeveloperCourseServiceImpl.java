@@ -85,7 +85,7 @@ public class DeveloperCourseServiceImpl implements DeveloperCourseService {
     }
 
     @Override
-    public List<DeveloperCourseDTO> findByDeveloperCourseByStudentId(Integer studentId) {
+    public List<DeveloperCourseDTO> findDeveloperCourseByStudentId(Integer studentId) {
         if (!studentRepository.findById(studentId).isPresent()) {
             throw new IllegalArgumentException
                 ("Student with the following id = " + studentId + " is not found.");
@@ -93,16 +93,16 @@ public class DeveloperCourseServiceImpl implements DeveloperCourseService {
         Optional<List<DeveloperCourse>> developerCourses = developerCourseRepository.findDevCourseByStudentId(studentId);
         if (!developerCourses.isPresent()) {
             throw new IllegalArgumentException
-                ("Courses are not present for student with the following id = " + studentId + " is not found.");
+                ("Courses are not present for student with the following id = " + studentId + ".");
         }
         return developerCourseMapper.transformToListOfDTO(developerCourses.get());
     }
 
     @Override
-    public List<DeveloperCourseDTO> findByDeveloperCourseByTeacherId(Integer teacherId) {
+    public List<DeveloperCourseDTO> findDeveloperCourseByTeacherId(Integer teacherId) {
         if (!teacherRepository.findById(teacherId).isPresent()) {
             throw new IllegalArgumentException
-                ("Teacher with the following id = " + teacherId + ".");
+                ("Teacher with the following id = " + teacherId + " is not found.");
         }
         Optional<List<DeveloperCourse>> developerCourses = developerCourseRepository.findDevCourseByTeacherId(teacherId);
         if (!developerCourses.isPresent()) {
