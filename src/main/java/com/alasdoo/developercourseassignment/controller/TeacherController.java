@@ -43,6 +43,11 @@ public class TeacherController {
         return teacherServiceImpl.update(id, teacherDTO);
     }
 
+    @PutMapping(value = "/delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void deleteTeacher(@PathVariable("id") Integer id) {
+        teacherServiceImpl.remove(id);
+    }
+
     @GetMapping(value = "/get/{email}", produces = MediaType.APPLICATION_JSON_VALUE)
     public TeacherDTO findByEmail(@PathVariable("email") String email) {
         return teacherServiceImpl.findByTeacherEmail(email);
