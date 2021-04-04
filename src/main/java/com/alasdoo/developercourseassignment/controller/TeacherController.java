@@ -2,7 +2,7 @@ package com.alasdoo.developercourseassignment.controller;
 
 import com.alasdoo.developercourseassignment.dto.TeacherDTO;
 import com.alasdoo.developercourseassignment.service.impl.TeacherServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/teacher")
 @CrossOrigin
 public class TeacherController {
 
-    @Autowired
-    TeacherServiceImpl teacherServiceImpl;
+    private final TeacherServiceImpl teacherServiceImpl;
 
     @GetMapping(value = "/getTeacher/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public TeacherDTO selectTeacher(@PathVariable("id") Integer id) {

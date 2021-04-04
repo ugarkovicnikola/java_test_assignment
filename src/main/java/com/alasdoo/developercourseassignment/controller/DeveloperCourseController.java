@@ -2,8 +2,9 @@ package com.alasdoo.developercourseassignment.controller;
 
 import com.alasdoo.developercourseassignment.dto.DeveloperCourseDTO;
 import com.alasdoo.developercourseassignment.service.impl.DeveloperCourseServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,17 +13,16 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/developercourse")
 @CrossOrigin
 public class DeveloperCourseController {
 
-    @Autowired
-    private DeveloperCourseServiceImpl developerCourseServiceImpl;
+    private final DeveloperCourseServiceImpl developerCourseServiceImpl;
 
     @GetMapping(value = "/getCourse/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public DeveloperCourseDTO selectDeveloperCourse(@PathVariable("id") Integer id) {
@@ -63,5 +63,4 @@ public class DeveloperCourseController {
     public List<DeveloperCourseDTO> getDeveloperCourseByTeacherId(@PathVariable("teacherId") Integer teacherId) {
         return developerCourseServiceImpl.findDeveloperCourseByTeacherId(teacherId);
     }
-
 }
