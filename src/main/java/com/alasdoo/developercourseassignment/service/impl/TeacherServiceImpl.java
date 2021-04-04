@@ -5,7 +5,7 @@ import com.alasdoo.developercourseassignment.entity.Teacher;
 import com.alasdoo.developercourseassignment.mapper.TeacherMapper;
 import com.alasdoo.developercourseassignment.repository.TeacherRepository;
 import com.alasdoo.developercourseassignment.service.TeacherService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,13 +13,11 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class TeacherServiceImpl implements TeacherService {
 
-    @Autowired
-    private TeacherRepository teacherRepository;
-
-    @Autowired
-    private TeacherMapper teacherMapper;
+    private final TeacherRepository teacherRepository;
+    private final TeacherMapper teacherMapper;
 
     @Override
     public TeacherDTO findOne(Integer id) {
