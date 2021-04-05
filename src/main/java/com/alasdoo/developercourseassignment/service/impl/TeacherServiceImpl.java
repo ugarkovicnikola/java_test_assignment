@@ -32,7 +32,7 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public List<TeacherDTO> findAll() {
         return teacherRepository.findAll().stream()
-            .map(teacher -> teacherMapper.transformToDTO(teacher))
+            .map(teacherMapper::transformToDTO)
             .collect(Collectors.toList());
     }
 
